@@ -85,7 +85,8 @@ ax.set_yticklabels([])
 ax.set_xlabel('')
 ax.set_ylabel('Number of Companies', size=20)
 ```
-![download](https://user-images.githubusercontent.com/108639250/186046300-38965940-9a7d-4334-ac08-7eb24a896ed8.png)
+![Screen Shot 2022-08-22 at 10 06 10 PM](https://user-images.githubusercontent.com/108639250/186052800-51bbf16b-73aa-42a9-beb9-8857f50540e2.png)
+
 
 8. Group data by state instead of rank
 
@@ -102,7 +103,8 @@ total.head()
 |    CA | 1642245.5 | 243037.7 |           2655976 |
 |    CO |  139591.0 |   6779.9 |            264788 |
 
-9. 
+9. Create histograms for country data
+```
 fig, ax = plt.subplots(2,2)
 ax = ax.ravel()
 sns.barplot(x='company', y='profit', data=total_by_country.sort_values(by='Sales',ascending=False).head(10), ax=ax[0])
@@ -115,6 +117,7 @@ for i in range(4):
     ax[i].set_ylabel('')
     ax[i].set_xlabel('')
 plt.tight_layout();
-
+```
+![Screen Shot 2022-08-22 at 9 57 01 PM](https://user-images.githubusercontent.com/108639250/186052919-fa5cc96b-e17b-400b-816f-d869de654ef3.png)
 
 
