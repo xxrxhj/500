@@ -75,7 +75,7 @@ Index(['Financials', 'Energy', 'Retailing', 'Technology', 'Health Care',
        'Food, Beverages & Tobacco', 'Wholesalers', 'Materials'],
       dtype='object')
 
-7. Visualize num. of companies by sector
+7. Visualize num. of companies per sector
 ```
 fig, ax = plt.subplots(figsize=(25,15))
 ax = sns.countplot(x='sector', data=df, order=group)
@@ -89,13 +89,12 @@ ax.set_ylabel('Number of Companies', size=20)
 ```
 ![Screen Shot 2022-08-22 at 10 06 10 PM](https://user-images.githubusercontent.com/108639250/186052800-51bbf16b-73aa-42a9-beb9-8857f50540e2.png)
 
-
 8. Group data by state instead of rank
 
 ```
-total = df.groupby('state', as_index=False).sum()
-total.drop(['rank'], axis=1, inplace=True)
-total.head()
+state = df.groupby('state', as_index=False).sum()
+state.drop(['rank'], axis=1, inplace=True)
+state.head()
 ```
 | state |   revenue |   profit | num. of employees |
 |------:|----------:|---------:|------------------:|
