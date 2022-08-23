@@ -1,3 +1,5 @@
+# Fortune 500 Exploratory Data Analysis
+
 1. Import Libraries
 
 ```
@@ -73,7 +75,7 @@ Index(['Financials', 'Energy', 'Retailing', 'Technology', 'Health Care',
        'Food, Beverages & Tobacco', 'Wholesalers', 'Materials'],
       dtype='object')
 
-7. Visualize companies by sector
+7. Visualize num. of companies by sector
 ```
 fig, ax = plt.subplots(figsize=(25,15))
 ax = sns.countplot(x='sector', data=df, order=group)
@@ -90,11 +92,11 @@ ax.set_ylabel('Number of Companies', size=20)
 
 8. Group data by state instead of rank
 
-``````
+```
 total = df.groupby('state', as_index=False).sum()
 total.drop(['rank'], axis=1, inplace=True)
 total.head()
-`````
+```
 | state |   revenue |   profit | num. of employees |
 |------:|----------:|---------:|------------------:|
 |    AL |    6755.0 |   1582.0 |             19564 |
@@ -104,6 +106,7 @@ total.head()
 |    CO |  139591.0 |   6779.9 |            264788 |
 
 9. Create histograms for country data
+
 ```
 fig, ax = plt.subplots(2,2)
 ax = ax.ravel()
@@ -118,6 +121,18 @@ for i in range(4):
     ax[i].set_xlabel('')
 plt.tight_layout();
 ```
-![Screen Shot 2022-08-22 at 9 57 01 PM](https://user-images.githubusercontent.com/108639250/186052919-fa5cc96b-e17b-400b-816f-d869de654ef3.png)
+![Screen Shot 2022-08-22 at 9 57 01 PM](https://user-images.githubusercontent.com/108639250/186052993-290e19c0-3ac0-4cdb-904f-208f0b4aee35.png)
 
-
+10. Compare top 6 firms by profit
+```
+top_profit = df.sort_values('profit', ascending=False)[:6]
+top_profit
+```
+| rank |       company      |  revenue |  profit | num. of employees |   sector   |      city     | state |              website              |
+|:----:|:------------------:|:--------:|:-------:|:-----------------:|:----------:|:-------------:|:-----:|:---------------------------------:|
+|    6 | Berkshire Hathaway | 254616.0 | 81417.0 |            391500 | Financials | Omaha         | NE    | https://www.berkshirehathaway.com |
+|    4 | Apple              | 260174.0 | 55256.0 |            137000 | Technology | Cupertino     | CA    | https://www.apple.com             |
+|   21 | Microsoft          | 125843.0 | 39240.0 |            144000 | Technology | Redmond       | WA    | https://www.microsoft.com         |
+|   17 | JPMorgan Chase     | 142422.0 | 36431.0 |            256981 | Financials | New York      | NY    | https://www.jpmorganchase.com     |
+|   11 | Alphabet           | 161857.0 | 34343.0 |            118899 | Technology | Mountain View | CA    | https://www.abc.xyz               |
+|   25 | Bank of America    | 113589.0 | 27430.0 |            208131 | Financials | Charlotte     | NC    | https://www.bankofamerica.com     |
