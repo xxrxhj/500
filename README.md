@@ -104,25 +104,8 @@ state.head()
 |    CA | 1642245.5 | 243037.7 |           2655976 |
 |    CO |  139591.0 |   6779.9 |            264788 |
 
-9. Create histograms for country data
 
-```
-fig, ax = plt.subplots(2,2)
-ax = ax.ravel()
-sns.barplot(x='company', y='profit', data=total_by_country.sort_values(by='Sales',ascending=False).head(10), ax=ax[0])
-sns.barplot(x='company', y='revenue', data=total_by_country.sort_values(by='Profit',ascending=False).head(10), ax=ax[1])
-sns.barplot(x='Country', y='num. of employees', data=total_by_country.sort_values(by='Assets',ascending=False).head(10), ax=ax[2])
-sns.barplot(x='Country', y='rank', data=total_by_country.sort_values(by='Market Value',ascending=False).head(10), ax=ax[3])
-for i in range(4):
-    ax[i].set_xticklabels(ax[i].get_xticklabels(), rotation=90)
-    ax[i].set_title(f'Top 10 Countries by {ax[i].get_ylabel()}' )
-    ax[i].set_ylabel('')
-    ax[i].set_xlabel('')
-plt.tight_layout();
-```
-![Screen Shot 2022-08-22 at 9 57 01 PM](https://user-images.githubusercontent.com/108639250/186052993-290e19c0-3ac0-4cdb-904f-208f0b4aee35.png)
-
-10. Compare top 6 firms by profit
+9. Compare top 6 firms by profit
 ```
 top_profit = df.sort_values('profit', ascending=False)[:6]
 top_profit
